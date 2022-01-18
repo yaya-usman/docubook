@@ -3628,10 +3628,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-wasm@^0.14.11:
-  version "0.14.11"
-  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.14.11.tgz#bd09f4c42969cddcae39007d284f8ef747aae85d"
-  integrity sha512-9e1R6hv0hiU+BkJI2edqUuWfXUbOP2Mox+Ijl/uY1vLLlSsunkrcADqD/4Rz+VCEDzw6ecscJM+uJqR2fRmEUg==
+esbuild-wasm@0.8.25:
+  version "0.8.25"
+  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.8.25.tgz#e953ad94a5969e818e5ec53acf98b9b71d70d294"
+  integrity sha512-9xbs34eWaawA7aTY8VkCz+74NgToBvzFybeQWKJH8hrRn6MBs1L+4quqa04+NiN/8nLVzZAaa+QOMKIQTpfXog==
 
 escalade@^3.1.1:
   version "3.1.1"
