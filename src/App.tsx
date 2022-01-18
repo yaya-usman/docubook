@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect, useRef } from "react";
+import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
+import * as esbuild from "esbuild-wasm";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [code, setCode] = useState("");
+  const ref = useRef<any>();
+
+  const startService = async () => {
+    const service = await esbuild.initialize({
+      worker: true,
+      wasmURL: '/esbuild.wasm'
+    })
+  }
+
+  useEffect(() => {
+    startService()
+  }, [])
+
+  const handleSubmit = () =>{
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <textarea value = {input} onChange={(e) => setInput(e.target.value)}></textarea>
+      <div>
+        <button onSubmit={handleSubmit}>submit</button>
+      </div>
+      <pre>{code}</pre>
     </div>
   );
 }
