@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect, useRef } from "react";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
+import CodeEditor from "./components/CodeEditor";
 
 import * as esbuild from "esbuild-wasm";
 
@@ -26,7 +27,6 @@ function App() {
       return;
     }
 
-
     //ensures the frame refreshes its content before rendering
     iframeRef.current.srcdoc = html;
 
@@ -41,8 +41,10 @@ function App() {
       },
     });
 
-
-    iframeRef.current.contentWindow.postMessage(result.outputFiles[0].text, '*');
+    iframeRef.current.contentWindow.postMessage(
+      result.outputFiles[0].text,
+      "*"
+    );
   };
 
   const html = `
@@ -65,10 +67,11 @@ function App() {
       </body>
     </html>
   
-  `
+  `;
 
   return (
-    <div className="App">
+    <div>
+      <CodeEditor />
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -76,8 +79,12 @@ function App() {
       <div>
         <button onClick={handleSubmit}>submit</button>
       </div>
-      <iframe title = "output" ref = {iframeRef} sandbox="allow-scripts" srcDoc={html}></iframe>
-
+      <iframe
+        title="output"
+        ref={iframeRef}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      ></iframe>
     </div>
   );
 }
