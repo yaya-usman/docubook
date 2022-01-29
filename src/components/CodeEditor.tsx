@@ -1,8 +1,11 @@
 import Editor, { OnChange, Monaco } from "@monaco-editor/react";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
 import { editor } from "monaco-editor";
+import "bulmaswatch/pulse/bulmaswatch.min.css";
+import "./CodeEditor.css";
+
 
 interface CodeEditorProps {
   initialValue: string;
@@ -19,7 +22,9 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   const handleOnMount = (
     editor: editor.IStandaloneCodeEditor,
     monaco: Monaco
-  ) => (editorRef.current = editor);
+  ) => {
+    editorRef.current = editor;
+  };
 
   const handleFormatClick = () => {
     // get the current value
@@ -43,8 +48,13 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   };
 
   return (
-    <>
-      <button onClick={handleFormatClick}>Format</button>
+    <div className="editor-wrapper">
+      <button
+        onClick={handleFormatClick}
+        className="button button-format is-primary"
+      >
+        Format
+      </button>
       <Editor
         onMount={handleOnMount}
         onChange={handleOnChange}
@@ -64,7 +74,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
           tabSize: 2,
         }}
       />
-    </>
+    </div>
   );
 };
 
