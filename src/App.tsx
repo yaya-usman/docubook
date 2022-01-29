@@ -7,7 +7,7 @@ import CodeEditor from "./components/CodeEditor";
 import * as esbuild from "esbuild-wasm";
 
 function App() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
   const ref = useRef<any>();
   const iframeRef = useRef<any>();
 
@@ -71,7 +71,10 @@ function App() {
 
   return (
     <div>
-      <CodeEditor />
+      <CodeEditor 
+      initialValue="const a = 1;"
+      onChange = {(value) => setInput(value)}
+      />
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
