@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
 import { editor } from "monaco-editor";
-import "bulmaswatch/pulse/bulmaswatch.min.css";
 import "./CodeEditor.css";
 
 
