@@ -22,6 +22,7 @@
     "esbuild-wasm": "0.8.25",
     "flow-parser": "^0.170.0",
     "history": "^5.2.0",
+    "immer": "^9.0.12",
     "jscodeshift": "0.11.0",
     "localforage": "^1.10.0",
     "monaco-editor": "^0.31.1",
