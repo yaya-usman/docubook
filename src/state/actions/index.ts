@@ -1,7 +1,7 @@
 import { ActionType } from "../action-types";
-import {cellTypes} from "../cell";
+import { cellTypes } from "../cell";
 
-export type Direction = 'up' | 'down';
+export type Direction = "up" | "down";
 
 export interface MoveCell {
   type: ActionType.MOVE_CELL;
@@ -34,4 +34,20 @@ export interface InsertCellAfter {
   };
 }
 
-export type Action = MoveCell | UpdateCell | DeleteCell | InsertCellAfter;
+export interface BundleCreatedAction {
+  type: ActionType.BUNDLE_CREATED;
+  payload: {
+    cellId: string;
+    bundle: {
+      code: string;
+      err: string;
+    };
+  };
+}
+
+export type Action =
+  | MoveCell
+  | UpdateCell
+  | DeleteCell
+  | InsertCellAfter
+  | BundleCreatedAction;

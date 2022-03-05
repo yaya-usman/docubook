@@ -1,6 +1,27 @@
-import React from 'react'
+import produce from 'immer';
+import { ActionType } from '../action-types';
+import { Action } from '../actions';
 
-export const bundleReducer = () => {
-    console.log("Test")
+interface BundlesState {
+  [key: string]: {
+    code: string;
+    err: string;
+  };
 }
 
+const initialState: BundlesState = {};
+
+const reducer = produce(
+  (state: BundlesState = initialState, action: Action): BundlesState => {
+    switch (action.type) {
+      case ActionType.BUNDLE_CREATED:
+        state[action.payload.cellId] = action.payload.bundle;
+
+        return state;
+      default:
+        return state;
+    }
+  },initialState
+);
+
+export default reducer;
